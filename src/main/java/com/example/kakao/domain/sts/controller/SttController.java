@@ -19,11 +19,14 @@ import java.util.List;
 public class SttController {
 
     private final SttService sttService;
+	private final ClaudeService service;
 
     @PostMapping(value = "/api/audio", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String handleAudioMessage(@RequestParam("audioFile") MultipartFile audioFile) throws IOException {
+    public Contents handleAudioMessage() throws IOException {
 		System.out.println("@@@@@@");
-        return sttService.transcribe(audioFile, 44100);
+		service.getContents("떡볶이는 맛있어 내 최애 음식이야");
+		
+		
 
     }
 }
