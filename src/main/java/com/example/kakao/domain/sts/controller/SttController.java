@@ -20,7 +20,7 @@ public class SttController {
     private final SttService sttService;
 
     @PostMapping(value = "/api/audio", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Contents handleAudioMessage(@RequestParam("audioFile") MultipartFile audioFile) throws IOException {
+    public String handleAudioMessage(@RequestParam("audioFile") MultipartFile audioFile) throws IOException {
         return sttService.transcribe(audioFile, 44100);
 
     }

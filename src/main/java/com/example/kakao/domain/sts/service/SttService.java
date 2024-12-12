@@ -22,7 +22,7 @@ public class SttService {
     private final ClaudeService claudeService;
 
 
-    public Contents transcribe(MultipartFile audioFile, int frequency) throws IOException {
+    public String transcribe(MultipartFile audioFile, int frequency) throws IOException {
         if (audioFile.isEmpty()) {
             throw new IOException("Required part 'audioFile' is not present.");
         }
@@ -55,9 +55,7 @@ public class SttService {
                 transcript.append(alternative.getTranscript());
             }
 
-            String string = transcript.toString();
-
-            return claudeService.getContents(string);
+            return transcript.toString();
         }
     }
 }
