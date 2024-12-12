@@ -6,7 +6,6 @@ import com.example.kakao.domain.claude.service.ClaudeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.concurrent.ExecutionException;
 
 
 @RequiredArgsConstructor
@@ -15,8 +14,8 @@ public class SttController {
 
     private final ClaudeService service;
 
-   @GetMapping("/api/aa")
-    public Contents handleAudioMessage() throws ExecutionException, InterruptedException {
+    @GetMapping("/aa")
+    public Contents handleAudioMessage() {
         System.out.println("@@@@@@");
         return service.getContents("떡볶이는 맛있어 내 최애 음식이야");
     }
