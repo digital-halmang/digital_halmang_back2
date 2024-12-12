@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
-    @GetMapping("/test")
+    @GetMapping("/api/test")
     public ResponseEntity<String> test() {
         return ResponseEntity.ok("Server is running");
     }
