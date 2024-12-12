@@ -26,22 +26,24 @@ public class ClaudeService {
     private String ANTHROPIC_API_KEY;
     private final String CLAUDE_API_URL = "https://api.anthropic.com/v1/messages";
 
-    public Contents getContents(String text) {
+    public CardNews getCardNews(String text) {
 
         List<String> card = askClaude(FIRST_PROMPT, text);
-        List<String> blog = askClaude(SECOND_PROMPT, text);
-        List<String> cap = askClaude(THIRD_PROMPT, text);
-
-        CardNews cardNews = new CardNews(card);
-        BlogPost blogPost = new BlogPost(blog);
-        Caption caption = new Caption(cap);
-        
-        return new Contents(cardNews, blogPost, caption);
-
+       return new CardNews(card);
     }
 
+    public BlogPost getBlog(String text) {
 
-    @Async
+        List<String> blog = askClaude(SECOND_PROMPT, text);
+        return new BlogPost(blog);
+    }
+
+    public Caption getCaption(String text) {
+
+        List<String> caption = askClaude(THIRD_PROMPT, text);
+        return new Caption(caption);
+    }
+
     public List<String> askClaude(String prompt, String text) {
 
         String format = String.format(prompt, text);

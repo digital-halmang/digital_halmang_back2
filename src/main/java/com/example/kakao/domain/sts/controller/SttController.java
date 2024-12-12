@@ -1,10 +1,13 @@
 package com.example.kakao.domain.sts.controller;
 
 
-import com.example.kakao.domain.claude.model.response.Contents;
+import com.example.kakao.domain.claude.model.response.BlogPost;
+import com.example.kakao.domain.claude.model.response.Caption;
+import com.example.kakao.domain.claude.model.response.CardNews;
 import com.example.kakao.domain.claude.service.ClaudeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -14,9 +17,18 @@ public class SttController {
 
     private final ClaudeService service;
 
-    @GetMapping("/api/aa")
-    public Contents handleAudioMessage() {
-        System.out.println("@@@@@@");
-        return service.getContents("떡볶이는 맛있어 내 최애 음식이야");
+    @PostMapping("/api/cardnews")
+    public CardNews getCardNews(@RequestBody String text) {
+        return service.getCardNews(text);
+    }
+
+    @PostMapping("/api/blog")
+    public BlogPost getBlog(@RequestBody String text) {
+        return service.getBlog(text);
+    }
+
+    @PostMapping("/api/caption")
+    public Caption getCaption(@RequestBody String text) {
+        return service.getCaption(text);
     }
 }
