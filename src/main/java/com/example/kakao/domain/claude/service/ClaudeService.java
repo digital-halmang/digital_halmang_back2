@@ -12,6 +12,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 import static com.example.kakao.domain.claude.constant.ClaudePrompt.*;
@@ -26,22 +30,20 @@ public class ClaudeService {
     private String ANTHROPIC_API_KEY;
     private final String CLAUDE_API_URL = "https://api.anthropic.com/v1/messages";
 
-    public Contents getContents(String text){
+    public Contents getContents(String text) throws ExecutionException, InterruptedException {
+        ExecutorService executor = Executors.newFixedThreadPool(3);
 
-        Caption caption = getCaption(text);
-        List<String> strings = askClaude(FIRST_PROMPT, text);
-        // List<String> strings2 = askClaude(SECOND_PROMPT, strings.get(0));
+        Future<List<String>> cardFuture = executor.submit(() -> askClaude(FIRST_PROMPT, text));
+        Future<List<String>> blogFuture = executor.submit(() -> askClaude(SECOND_PROMPT, text));
+        Future<List<String>> captionFuture = executor.submit(() -> askClaude(THIRD_PROMPT, text));
 
-        CardNews cardNews = new CardNews(strings);
-        // BlogPost blogPost = new BlogPost(strings2);
-        return new Contents(cardNews, null, caption);
-    }
+        CardNews cardNews = new CardNews(cardFuture.get());
+        BlogPost blogPost = new BlogPost(blogFuture.get());
+        Caption caption = new Caption(captionFuture.get());
 
-    @Async
-    public Caption getCaption(String text){
+        executor.shutdown();
 
-        List<String> strings = askClaude(THIRD_PROMPT, text);
-        return new Caption(strings);
+        return new Contents(cardNews, blogPost, caption);
 
     }
 
