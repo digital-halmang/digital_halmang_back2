@@ -17,7 +17,7 @@ public class SttController {
     private final SttService sttService;
     private final ClaudeService service;
 
-    @GetMapping("/aa")
+    @GetMapping("/api/aa")
     public Contents handleAudioMessage() throws IOException {
         System.out.println("@@@@@@");
         return service.getContents("떡볶이는 맛있어 내 최애 음식이야");
