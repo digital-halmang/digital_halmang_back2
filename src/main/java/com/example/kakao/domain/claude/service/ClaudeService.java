@@ -27,7 +27,6 @@ public class ClaudeService {
     private final String CLAUDE_API_URL = "https://api.anthropic.com/v1/messages";
 
     public CardNews getCardNews(String text) {
-
         List<String> card = askClaude(FIRST_PROMPT, text);
        return new CardNews(card);
     }
@@ -56,7 +55,7 @@ public class ClaudeService {
         // 요청 바디 생성
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("model", "claude-3-opus-20240229");
-        requestBody.put("max_tokens", 2048);
+        requestBody.put("max_tokens", 1800);
         requestBody.put("messages", Collections.singletonList(
                 Map.of("role", "user", "content", format)
         ));
