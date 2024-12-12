@@ -12,7 +12,7 @@ import org.springframework.core.io.Resource;
 @Configuration
 public class SttConfig {
 
-    @Value("classpath:stt.json")
+    @Value("/app/src/main/resources/stt.json")
     Resource gcsCredentials;
 
     @Bean
