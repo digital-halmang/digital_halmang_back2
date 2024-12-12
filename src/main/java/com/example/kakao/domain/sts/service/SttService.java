@@ -1,6 +1,9 @@
 package com.example.kakao.domain.sts.service;
 
 
+import com.example.kakao.domain.claude.model.response.ContentItem;
+import com.example.kakao.domain.claude.model.response.Contents;
+import com.example.kakao.domain.claude.service.ClaudeService;
 import com.google.cloud.speech.v1.*;
 import com.google.protobuf.ByteString;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -15,10 +19,10 @@ public class SttService {
 
     private final SpeechSettings speechSettings;
 
-//    private final ClaudeService claudeService;
+    private final ClaudeService claudeService;
 
 
-    public String transcribe(MultipartFile audioFile, int frequency) throws IOException {
+    public Contents transcribe(MultipartFile audioFile, int frequency) throws IOException {
         if (audioFile.isEmpty()) {
             throw new IOException("Required part 'audioFile' is not present.");
         }
@@ -53,7 +57,7 @@ public class SttService {
 
             String string = transcript.toString();
 
-            return string;
+            return claudeService.getContents(string);
         }
     }
 }
