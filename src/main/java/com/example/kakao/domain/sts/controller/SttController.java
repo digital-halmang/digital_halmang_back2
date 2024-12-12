@@ -3,7 +3,6 @@ package com.example.kakao.domain.sts.controller;
 
 import com.example.kakao.domain.claude.model.response.Contents;
 import com.example.kakao.domain.claude.service.ClaudeService;
-import com.example.kakao.domain.sts.service.SttService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +13,6 @@ import java.io.IOException;
 @RestController
 public class SttController {
 
-    private final SttService sttService;
     private final ClaudeService service;
 
    @GetMapping("/aa")
