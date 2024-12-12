@@ -6,7 +6,7 @@ import com.example.kakao.domain.claude.service.ClaudeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 
 @RequiredArgsConstructor
