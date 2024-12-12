@@ -1,17 +1,13 @@
 package com.example.kakao.domain.sts.service;
 
 
-import com.example.kakao.domain.claude.model.response.ContentItem;
 import com.example.kakao.domain.claude.model.response.Contents;
 import com.example.kakao.domain.claude.service.ClaudeService;
-import com.google.cloud.speech.v1.*;
-import com.google.protobuf.ByteString;
+import com.example.kakao.domain.sts.service.SttService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.util.concurrent.ExecutionException;
 
 @RequiredArgsConstructor
 @Service
