@@ -15,7 +15,7 @@ public class SttController {
 
     private final ClaudeService service;
 
-   @GetMapping("/apit/aa")
+   @GetMapping("/api/aa")
     public Contents handleAudioMessage() throws ExecutionException, InterruptedException {
         System.out.println("@@@@@@");
         return service.getContents("떡볶이는 맛있어 내 최애 음식이야");
