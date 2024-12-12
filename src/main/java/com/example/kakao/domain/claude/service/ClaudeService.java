@@ -29,13 +29,13 @@ public class ClaudeService {
     public Contents getContents(String text){
 
         Caption caption = getCaption(text);
-        List<String> strings = askClaude(FIRST_PROMPT, text);
-        List<String> strings2 = askClaude(SECOND_PROMPT, strings.get(0));
+        // List<String> strings = askClaude(FIRST_PROMPT, text);
+        // List<String> strings2 = askClaude(SECOND_PROMPT, strings.get(0));
 
-        CardNews cardNews = new CardNews(strings);
-        BlogPost blogPost = new BlogPost(strings2);
+        // CardNews cardNews = new CardNews(strings);
+        // BlogPost blogPost = new BlogPost(strings2);
 
-        return new Contents(cardNews, blogPost, caption);
+        return new Contents(null,null, caption);
 
     }
 
