@@ -38,11 +38,6 @@ public class ClaudePrompt {
             "        \"highlights\": [\"강조할\", \"키워드\"]\n" +
             "      }\n" +
             "    ],\n" +
-            "    \"conclusion\": {\n" +
-            "      \"text\": \"마무리 텍스트\",\n" +
-            "      \"imagePosition\": \"이미지 위치 표시(선택사항)\"\n" +
-            "    }\n" +
-            "  }\n" +
             "}";
 
     public final static String THIRD_PROMPT = "당신은 인스타그램 마케팅 전문가입니다.\n" +
@@ -60,7 +55,6 @@ public class ClaudePrompt {
             "- MZ세대가 선호하는 캐주얼한 말투\n" +
             "- 적절한 이모티콘 사용\n" +
             "- 간결하고 임팩트 있는 문장\n" +
-            "- 줄바꿈을 활용한 가독성\n" +
             "- 공감과 참여를 유도하는 표현\n\n" +
             "3. JSON 구조\n" +
             "{\n" +
